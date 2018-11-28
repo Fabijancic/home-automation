@@ -1,3 +1,6 @@
 token.json
 credentials.json
 tempAndHumidity-b4174e738444.json
+.directory
+__pycache__
+*.kate-swp
