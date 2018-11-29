@@ -29,15 +29,15 @@ class GoogleUploader:
             return self.sheet
         except Exception as e:
             print('Failed to connect to sheet: {}'.format(e))
-            raise
+            return False
 
-    def appendToSheet(self, data, INTERVAL):
+    def appendToSheet(self, data):
         ''' Upload data as a row to google spreadsheet
             Input: data = list, INTERVAL - seconds
         '''
         # Check the connection
         if not self._connectToSheet():
-            print('Something happened :/')
+            self._connectToSheet()
 
         try:
             # Check the input data
@@ -52,8 +52,6 @@ class GoogleUploader:
         except Exception as e:
             print('Failed to append_row: {} with error: {}'.format(row[0], e))
             self.sheet = None  # Reset connection
-        # pause before it can run again, should remove this
-        time.sleep(INTERVAL)
 
 
 
